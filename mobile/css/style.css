@@ -1,0 +1,84 @@
+
+
+.select_body{
+	
+	text-align:center; 
+	border:1px solid white; 
+	border-radius: 5px;
+	padding:10px;
+	
+	
+}
+
+.settings_select{
+	
+	width:100%; 
+	padding:5px; 
+	border-radius:5px; 
+	margin-bottom:10px;
+
+	
+}
+
+
+input{
+	
+	padding: .8em;
+	
+}
+
+
+#show_more{
+	
+	width:100%;
+	padding:20px;
+
+	text-align:center;
+	margin:0 auto;
+	font-size:20px;
+		
+	
+	background-color:#EFECEC; 
+	color:black;
+}
+
+    .modal_window{
+        position: fixed;
+        text-align: center;
+        padding: 10px;    
+	
+		border:1px soliв black;
+		
+		top:0%;
+		left:10%;
+		right:10%;
+		bottom:5%;
+		
+
+		
+		vertical-align:middle;
+		z-index:999;   
+		
+    }  
+	
+	
+	.modal_img{
+		position: relative;
+		max-width:70%;
+		max-height:90%;
+
+		
+	}
+	
+	
+	.ob{
+	
+	padding:15px; 
+	background-color:#EFECEC; 
+	border-radius:0px 10px 10px 0px; 
+	min-height:130px;
+	color:black;
+	
+	}
+	
+	

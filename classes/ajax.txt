@@ -1,0 +1,28 @@
+<script src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+
+<script>
+	function funcBefore(){
+		$('#information').text('ќжидание данных...');
+	}
+
+	function funcSuccess(data){
+		$('#information').html(data);	
+	}
+
+
+	$(document).ready(function(){
+		
+		$('#load').bind('change', function(){
+		var admin='Admin';	
+			$.ajax({
+				url: 'c1.php',
+				type: 'POST',
+				data: ({name: $('#load').val()}),
+				dataType: 'html',
+				beforeSend: funcBefore,
+				success: funcSuccess
+			});
+		});	
+	});
+
+</script>

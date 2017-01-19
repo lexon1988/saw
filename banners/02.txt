@@ -1,0 +1,7 @@
+<br>
+
+<div style='width:800px; border:1px solid grey; padding:10px;height:100px'>
+
+Средний баннер
+
+</div>

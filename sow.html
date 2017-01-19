@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Swiper demo</title>
+    <!-- Link Swiper's CSS -->
+
+    <!-- Demo styles -->
+    <style>
+#slideshow {
+  margin-left: 0;
+  position: relative;
+  background-color: #fff;
+  border: 1px solid lightgrey;
+  width: 260px;
+  height: 260px;
+}
+
+#slideshow > div {
+  position: absolute;
+/*left: 10%;
+right: 10%;
+top: 25%;
+bottom: 25%;
+text-align: center;
+*/
+}
+
+.swiper-slide {
+font-size: 15px;
+color: #354759;
+}
+
+    </style>
+</head>
+<body>
+    <!-- Swiper -->
+
+
+<div id="slideshow" class="shadow2">
+<!--            <div class="swiper-slide"><br />Настрой фильтр ленты так, чтобы это было максимально информативно для тебя.</div>
+            <div class="swiper-slide"><br />Все объявления в ленте отражают реальные потребности пользователей нашего сайта.</div>
+            <div class="swiper-slide">Зная, что на самом деле нужно твоим клиентам, ты всегда можешь скорректировать своё предложение.</div>
+            <div class="swiper-slide">У нас нет понятий "Актуализация", "Поднять в Топ", "Украсить Ваше объявление" <br>В них просто нет необходимости. <br>Всё намного проще.</div>
+            <div class="swiper-slide"><br />Скажи, что ты ищешь, и это само найдёт тебя.</div>
+-->
+<div class="swiper-slide"><img src='FB/1.png' width='259px' ></div>
+<div class="swiper-slide"><img src='FB/2.png' width='259px' ></div>
+<div class="swiper-slide"><img src='FB/3.png' width='259px' ></div>
+<div class="swiper-slide"><img src='FB/4.png' width='259px' ></div>
+</div>
+
+
+
+    <!-- Swiper JS -->
+
+    <!-- Initialize Swiper -->
+    <script>
+$("#slideshow > div:gt(0)").hide();
+
+setInterval(function() {
+  $('#slideshow > div:first')
+    .fadeOut(1000)
+    .next()
+    .fadeIn(1000)
+    .end()
+    .appendTo('#slideshow');
+}, 7500);
+
+    </script>
+</body>
+</html>

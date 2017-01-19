@@ -1,0 +1,9 @@
+<td valign='top'>
+
+<div style='width:160px; border:1px solid grey; padding:10px;height:400px'>
+
+Правый банер!
+
+</div>
+
+</td>

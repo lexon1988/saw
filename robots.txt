@@ -1,0 +1,6 @@
+Sitemap: http://saawok.com/sitemap.xml
+
+#global
+User-agent: *
+
+Disallow: /cabinet

@@ -1,0 +1,10 @@
+[17-Jan-2017 15:38:22 Asia/Almaty] PHP Fatal error:  Call to undefined method Database::get_email_by_id() in /home/tratatak/public_html/new/admin/ads_my.php on line 163
+[17-Jan-2017 15:38:22 Asia/Almaty] PHP Fatal error:  Call to undefined method Database::get_email_by_id() in /home/tratatak/public_html/new/admin/ads_my.php on line 163
+[17-Jan-2017 15:40:23 Asia/Almaty] PHP Warning:  include(.../classes/mailer/libmail.php): failed to open stream: No such file or directory in /home/tratatak/public_html/new/admin/ads_my.php on line 166
+[17-Jan-2017 15:40:23 Asia/Almaty] PHP Warning:  include(.../classes/mailer/libmail.php): failed to open stream: No such file or directory in /home/tratatak/public_html/new/admin/ads_my.php on line 166
+[17-Jan-2017 15:40:23 Asia/Almaty] PHP Warning:  include(): Failed opening '.../classes/mailer/libmail.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/tratatak/public_html/new/admin/ads_my.php on line 166
+[17-Jan-2017 15:40:23 Asia/Almaty] PHP Fatal error:  Class 'Mail' not found in /home/tratatak/public_html/new/admin/ads_my.php on line 168
+[17-Jan-2017 15:40:23 Asia/Almaty] PHP Warning:  include(.../classes/mailer/libmail.php): failed to open stream: No such file or directory in /home/tratatak/public_html/new/admin/ads_my.php on line 166
+[17-Jan-2017 15:40:23 Asia/Almaty] PHP Warning:  include(.../classes/mailer/libmail.php): failed to open stream: No such file or directory in /home/tratatak/public_html/new/admin/ads_my.php on line 166
+[17-Jan-2017 15:40:23 Asia/Almaty] PHP Warning:  include(): Failed opening '.../classes/mailer/libmail.php' for inclusion (include_path='.:/usr/lib/php:/usr/local/lib/php') in /home/tratatak/public_html/new/admin/ads_my.php on line 166
+[17-Jan-2017 15:40:23 Asia/Almaty] PHP Fatal error:  Class 'Mail' not found in /home/tratatak/public_html/new/admin/ads_my.php on line 168
