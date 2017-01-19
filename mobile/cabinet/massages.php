@@ -10,28 +10,16 @@
         <script src="../js/jquery.mobile-1.4.5.js"></script>
 		<script src="../js/jquery.shorten.1.0.js"></script>
 <meta charset='utf-8'>
-		
-		
-		
-		
-
-		
-		
-		
-		<style>
-		
+<style>
 		td{
-			
 			padding:3px;
 			font-size:10px;
 			color:black;
-			
 			background-color:#EFECEC;
 			border:1px solid lighthgrey;
 		}
 		
 		th{
-			
 			//border:1px solid grey;
 			padding:3px;
 			background-color:lightgrey;
@@ -39,24 +27,14 @@
 			color:black;
 		}
 		
-	
-		
+
 		.links{
 			
 			font-size:12px;
 			
 		}
 
-	
 
-		
-		
-		
-		
-		
-		
-		
-		
 		.white{
 			
 		   color:white;
@@ -227,6 +205,21 @@ $out_mass_count=count($out_mass);
 
 <?php
 
+//Черный список
+$bl=$db->db_select("black_list","WHERE (good_user='$from_post' AND bad_user='$to_post') OR (good_user='$to_post' AND bad_user='$from_post')");	  
+if($bl<>""){
+	
+	echo "<h1>Доступ ограничен черным списком!</h1>";
+	exit();
+}
+
+
+
+
+
+
+
+
 if($_GET['ads']<>"" and $_GET['to']<>""){
 
 
@@ -277,11 +270,7 @@ for($i=0;$i<$massages_count;$i++){
 		";
 	
 	
-	
-	
-	
-	
-	
+
 	
 }
 
