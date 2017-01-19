@@ -99,6 +99,15 @@
 			
 		}
 		
+		.mass{
+			
+			padding:5px;
+			width:100%;
+			background-color:skyblue;
+			color:white;
+			font-size:25px;
+		}
+		
 		</style>
 		
 
@@ -437,8 +446,43 @@ echo "
 <?php
  }else{
 	 
-	 echo "<h1>Выберите собеседника через меню \"Контакты\"</h1>";
+	 //СТАРТОВАЯ СТРАНИЦА
 	 
+	 ?>
+	 
+		<div class='mass'>
+		<b>Входящие:</b>
+		</div>
+		<?php
+	
+		for($i=0;$i<$in_mass_count;$i++){
+			$temp_user= $db->get_user_by_id($in_mass[$i]['from_post']);
+			$temp_ads=$in_mass[$i]['ads'];
+			echo "<h2><a href='massages.php?to=".$in_mass[$i]['from_post']."&ads=".$in_mass[$i]['ads']."#down' style=' font-size:16px; text-decoration:none;' rel='external'>".$temp_user." [".$temp_ads."]</a></h2><br>";
+		}
+		if($in_mass_count=="") echo "<br>Нет сообщений<br><br>";
+		?>
+		
+
+		<div class='mass'>
+		<b>Исходящие:</b>
+		</div>
+		<?php
+		for($i=0;$i<$out_mass_count;$i++){
+		$temp_user= $db->get_user_by_id($out_mass[$i]['to_post']);
+		$temp_ads=$out_mass[$i]['ads'];
+		echo "<h2><a href='massages.php?to=".$out_mass[$i]['to_post']."&ads=".$out_mass[$i]['ads']."#down' style='font-size:16px; text-decoration:none;' rel='external'>".$temp_user." [".$temp_ads."]</a></h2><br>";
+		}	
+		if($out_mass_count=="") echo "<br>Нет сообщений<br><br>";
+		?>
+	 
+		<div class='mass'>
+		<b>Контакты администрации:</b>
+		</div>
+		<br>
+		<a href='massages.php?to=000&ads=000#down' style='font-size:16px; text-decoration:none;' rel='external'>СЛУЖБА ПОДДЕРЖКИ</a>
+		
+	 <?php
  } 
  
  

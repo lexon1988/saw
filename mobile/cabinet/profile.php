@@ -118,7 +118,7 @@ echo "
 	
 	
 	<br>
-	<font class='warning_st1'>Изменить имя или почту можно только через службу поддержки</font> - <font class='info_st1'><a href='".$url."/cabinet/massages.php?to=000&ads=000'>написать в службу поддержки</a></font>
+	<font class='warning_st1'>Изменить имя или почту можно только через службу поддержки</font> - <font class='info_st1'><a href='".$url."/cabinet/massages.php?to=000&ads=000' rel='external'>написать в службу поддержки</a></font>
 		<hr>
 
 	<b>Сменить пароль</b>
