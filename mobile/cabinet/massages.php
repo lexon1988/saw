@@ -209,7 +209,10 @@ $out_mass_count=count($out_mass);
 $bl=$db->db_select("black_list","WHERE (good_user='$from_post' AND bad_user='$to_post') OR (good_user='$to_post' AND bad_user='$from_post')");	  
 if($bl<>""){
 	
-	echo "<h1>Доступ ограничен черным списком!</h1>";
+	echo "<h1>Доступ ограничен черным списком!</h1>
+	<h2><a href='massages.php' rel='external'><< Вернуться в список контактов</h2>
+	
+	";
 	exit();
 }
 
