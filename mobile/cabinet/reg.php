@@ -1,476 +1,276 @@
-<?php
-
-include('../../classes/class.php');
-
-
-
-$headerr=new Headerr();
-
-$db=new Database();
+<?php include( '../../classes/class.php'); $headerr=new Headerr(); $db=new Database(); ?>
 
 
 
 
-
-?>
-
-
-
-<link rel='stylesheet' type='text/css' href='../../css/jquery.fancybox.css' media='screen'>
 <meta charset='utf-8'>
-<link rel='stylesheet' type='text/css' href='../../css/style.css'>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel='stylesheet' href='../../css/bootstrap.min.css' type='text/css' media='all'>
-<link rel='stylesheet' href='../../css/font-awesome.min.css' media='all'>
-<link href='http://fonts.googleapis.com/icon?family=Material+Icons' rel='stylesheet'>
-<link rel='icon' type='image/x-icon' href='../../images/sww.ico'>				
+<link rel="stylesheet" href="../css/style.css" />
+<link rel="stylesheet" href="../css/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/jqm-demos.css" />
+
+
+
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
 <script async src='../../js/bootstrap.min.js'></script>
-<script async src='../../js/infinite_scroll.js'></script>	
-<script async type='text/javascript' src='../../js/jquery.fancybox.js'></script>
 <script type="text/javascript" src="../../js/bootstrapValidator.js"></script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="../js/jquery.mobile-1.4.5.js"></script>
+<script src="../js/jquery.shorten.1.0.js"></script>
 
 
 
+<div data-role="page" style="min-height: 613px;">
+    <div role="main" class="ui-content grid">
 
 
-<div class='auth_r'>
 
 
+        <form action='../../reg_mob.php' id="defaultForm" method="post" novalidate="novalidate">
 
-<form action='../../reg_mob.php'  id="defaultForm" method="post"  novalidate="novalidate">
+            <div class="form-group has-success">
 
-<div class="form-group has-success">
+                <label class=" control-label">Ник</label>
 
-<label class=" control-label">Ник</label>
+                <br>
 
-<br>
+                <input type="text" class="form-control" name="username">
 
-<input type="text" class="form-control" name="username">
+            </div>
 
-</div>
 
 
+            <div class="form-group has-success">
 
-<div class="form-group has-success">
+                <label class="control-label">Email</label>
 
-<label class="control-label">Email</label>
+                <br>
 
-<br>
+                <input type="text" class="form-control" name="email">
 
-<input type="text" class="form-control" name="email">
+            </div>
 
-</div>
 
 
 
 
+            <div class="form-group has-success">
 
-	
 
-	
 
-	
 
-	<div class="form-group has-success">
+                <?php include( '../tools/region/reg/index.php'); ?>
 
+            </div>
 
 
 
-<?php
 
 
+            <div class="form-group has-error">
 
-include('../tools/region/reg/index.php');
+                <label class="control-label">Пароль</label>
 
+                <br>
 
+                <input type="password" class="form-control" name="password">
 
-?>
+            </div>
 
-	</div>	
 
-	
 
-	
 
-	
 
-	
+            <div class="form-group has-error">
 
-	
+                <label class="control-label">Подтверждение пароля</label>
 
-	
+                <br>
 
-	
+                <input type="password" class="form-control" name="confirmPassword">
 
-	
+            </div>
 
-		
 
-	
 
-	
 
-<div class="form-group has-error">
 
-<label class="control-label">Пароль</label>
+            <br>
 
-<br>
+            <div class="g-recaptcha" data-sitekey="6LcqIhAUAAAAAHkHVyZ7CaE7Ln3MozYiU1gXR9t0"></div>
 
-<input type="password" class="form-control" name="password">
+            <br>
 
-</div>
 
+            <button type="submit" class="btn btn-primary" disabled="disabled">Зарегистрировать</button>
 
+        </form>
 
-	
 
-	
 
-	
+    </div>
 
-	
 
-<div class="form-group has-error">
 
-<label class="control-label">Подтверждение пароля</label>
 
-<br>
 
-<input type="password" class="form-control" name="confirmPassword">
+    <script type="text/javascript">
+        $(document).ready(function() {
 
-</div>
 
 
 
-	
+            // Generate a simple captcha
 
-	
+            function randomNumber(min, max) {
 
+                return Math.floor(Math.random() * (max - min + 1) + min);
 
+            };
 
-	
 
-	
 
-	
 
+            $('#defaultForm').bootstrapValidator({
 
-<br>
+                message: 'This value is not valid',
 
-<div class="g-recaptcha" data-sitekey="6LcqIhAUAAAAAHkHVyZ7CaE7Ln3MozYiU1gXR9t0"></div>
+                fields: {
 
-<br>
+                    username: {
 
+                        message: 'Не валидное имя',
 
-<button type="submit" class="btn btn-primary" disabled="disabled">Зарегистрировать</button>
+                        validators: {
 
-</form>
+                            notEmpty: {
 
+                                message: 'Имя не должно быть пустым'
 
+                            },
 
-		</div>
+                            stringLength: {
 
-	
+                                min: 2,
 
+                                max: 20,
 
+                                message: 'Длинна имени может быть от 2 до 20 символов'
 
-<!--
+                            },
 
+                            regexp: {
 
+                                regexp: /^[а-яА-ЯёЁa-zA-Z0-9]+$/,
 
+                                message: 'Запрещённые символы'
 
+                            },
 
+                            different: {
 
+                                field: 'password',
 
+                                message: 'Имя не должно совпадать с паролем'
 
+                            }
 
-<h1>Регистрация</h1>
-
-<hr>
-
-	<label><b>Имя:</b></label><br>
-
-	
-
-	<input type="text" class="form-control" name="username">
-
-	<small class="help-block" style="display: none;">Имя должно быть больше 2 символов</small>
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-<br>
-
-	<label><b>E-mail:</b></label><br>
-
-	<input class='input_st1' type='text' size='30' name='email'>
-
-<br>
-
-
-
-<label><b>Телефон:</b></label><br>
-
-	<input class='input_st1' type='text' size='30' name='phone'>
-
-<br>
-
-
-
-<?php
-
-
-
-include('../tools/region/reg/index.php');
-
-
-
-?>
-
-
-
-
-
-	<label><b>Пароль:</b></label><br>
-
-	<input class='input_st1' type='password' size='30' name='pass'>
-
-<br><br>
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	
-
-	<input class='submit_st1' type='submit' value='Отправить'>
-
-
-
-</form>
-
-</div>
-
-</div>
-
-<br />
-
-</div>
-
-
-
-
-
--->
-
-
-
-
-
-
-
-
-
-
-
-<script type="text/javascript">
-
-$(document).ready(function() {
-
-	
-
-	
-
-
-
-	
-
-	
-
-    // Generate a simple captcha
-
-    function randomNumber(min, max) {
-
-        return Math.floor(Math.random() * (max - min + 1) + min);
-
-    };
-
-
-
-
-
-    $('#defaultForm').bootstrapValidator({
-
-        message: 'This value is not valid',
-
-        fields: {
-
-            username: {
-
-                message: 'Не валидное имя',
-
-                validators: {
-
-                    notEmpty: {
-
-                        message: 'Имя не должно быть пустым'
+                        }
 
                     },
 
-                    stringLength: {
+                    email: {
 
-                        min: 2,
+                        validators: {
 
-                        max: 20,
+                            notEmpty: {
 
-                        message: 'Длинна имени может быть от 2 до 20 символов'
+                                message: 'Email не должен быть пустым'
+
+                            },
+
+                            emailAddress: {
+
+                                message: 'Не валидный Email адрес'
+
+                            }
+
+                        }
 
                     },
 
-                    regexp: {
+                    password: {
 
-                        regexp: /^[а-яА-ЯёЁa-zA-Z0-9]+$/,
+                        validators: {
 
-                        message: 'Запрещённые символы'
+                            notEmpty: {
+
+                                message: 'Пароль не должен быть пустым'
+
+                            },
+
+                            identical: {
+
+                                field: 'confirmPassword',
+
+                                message: 'Пароли не совпадают'
+
+                            },
+
+                            different: {
+
+                                field: 'username',
+
+                                message: 'Пароль не должен совпадать с никнеймом'
+
+                            }
+
+                        }
 
                     },
 
-                    different: {
+                    confirmPassword: {
 
-                        field: 'password',
+                        validators: {
 
-                        message: 'Имя не должно совпадать с паролем'
+                            notEmpty: {
 
-                    }
+                                message: 'Подтверждение пароля не должно быть пустым'
+
+                            },
+
+                            identical: {
+
+                                field: 'password',
+
+                                message: 'Пароли не совпадают'
+
+                            },
+
+                            different: {
+
+                                field: 'username',
+
+                                message: 'Пароль не должен совпадать с логином'
+
+                            }
+
+                        }
+
+                    },
+
+
 
                 }
 
-            },
+            });
 
-            email: {
-
-                validators: {
-
-                    notEmpty: {
-
-                        message: 'Email не должен быть пустым'
-
-                    },
-
-                    emailAddress: {
-
-                        message: 'Не валидный Email адрес'
-
-                    }
-
-                }
-
-            },
-
-            password: {
-
-                validators: {
-
-                    notEmpty: {
-
-                        message: 'Пароль не должен быть пустым'
-
-                    },
-
-                    identical: {
-
-                        field: 'confirmPassword',
-
-                        message: 'Пароли не совпадают'
-
-                    },
-
-                    different: {
-
-                        field: 'username',
-
-                        message: 'Пароль не должен совпадать с никнеймом'
-
-                    }
-
-                }
-
-            },
-
-            confirmPassword: {
-
-                validators: {
-
-                    notEmpty: {
-
-                        message: 'Подтверждение пароля не должно быть пустым'
-
-                    },
-
-                    identical: {
-
-                        field: 'password',
-
-                        message: 'Пароли не совпадают'
-
-                    },
-
-                    different: {
-
-                        field: 'username',
-
-                        message: 'Пароль не должен совпадать с логином'
-
-                    }
-
-                }
-
-            },
-
-            
-
-        }
-
-    });
-
-});
-
-</script>
+        });
+    </script>
 
 
 
 
 
-
-
-<?
-
-
-
-$headerr->footerr();
-
-
-
-
-
-?>
+    <? $headerr->footerr(); ?>

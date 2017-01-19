@@ -112,7 +112,10 @@ echo "
 
 	<b>Имя: </b>".$arr_db[0]['name']." <br>
 	<b>E-mail: </b>".$arr_db[0]['email']." <br>
+	<!--
 	<b>Телефон: </b>".$arr_db[0]['phone']." <br>
+	-->
+	
 	
 	<br>
 	<font class='warning_st1'>Изменить имя или почту можно только через службу поддержки</font> - <font class='info_st1'><a href='".$url."/cabinet/massages.php?to=000&ads=000'>написать в службу поддержки</a></font>

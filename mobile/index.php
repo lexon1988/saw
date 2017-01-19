@@ -215,9 +215,10 @@ $day_filter="Фильтр по дням";
             <label for="pw" class="ui-hidden-accessible">Пароль:</label>
             <input type="password" name="pass" id="pw" value="" placeholder="Пароль" data-theme="a">
             <button type="submit" class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left">Войти</button>
-        </div>
+			<a href='cabinet/reg.php' rel="external" style=' text-decoration:none;'><div  class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left">Регистрация</div></a>   
+     </div>
     </form>
-		<a href='cabinet/reg.php' rel="external"><button  class="ui-btn ui-corner-all ui-shadow ui-btn-b ui-btn-icon-left">Регистрация</button></a>
+
 
 </div>
         
