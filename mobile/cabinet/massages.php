@@ -67,7 +67,7 @@
 			margin-top:10px;
 			min-height:20px;
 			padding:15px;
-			width:50%;
+			width:75%;
 			border-radius:25px;	
 			background-color:#EFECEC;
 			
@@ -79,10 +79,10 @@
 			margin-top:10px;
 			min-height:20px;
 			padding:15px;
-			width:50%;
+			width:75%;
 			border-radius:25px;	
 			background-color:#DFFFB3;			
-			margin-left:45%;
+			margin-left:25%;
 		}
 		
 		.chat_in_p{
@@ -270,9 +270,12 @@ for($i=0;$i<$massages_count;$i++){
 	
 	$massage_text=str_replace("../", "../../", $massages[$i]['massage']);
 	$massage_text=str_replace("40em", "", $massage_text);
-	$massage_text=str_replace("height", "style='max-width:90%;'", $massage_text);
-	
-	
+	$massage_text=str_replace("height", "style='max-width:100%;'", $massage_text);
+	$massage_text=preg_replace('/<script\b[^>]*>(.*?)<\/script>/is', "", $massage_text);
+	preg_match("/(.*)\<img/",$massage_text,$hreff);
+	$massage_text=str_replace($hreff[1], "", $massage_text);
+	$massage_text=str_replace("</a>", "", $massage_text);
+
 	
 	$date_mass=date("d.m.y в H:i:s",$massages[$i]['date']);
 
