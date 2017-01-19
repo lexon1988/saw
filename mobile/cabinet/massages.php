@@ -679,10 +679,13 @@ if($_POST['massage']<>""){
 		
 		
 <script>
+var down=$(document).height()-50;
 
 $(window).load(function() {
-  $("html, body").animate({ scrollTop: $(document).height() }, 1000);
-});
+  		
+	$("html, body").animate({ scrollTop: down }, 1000);
+
+ });
 
 </script>
 		
