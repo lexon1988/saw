@@ -1,4 +1,9 @@
 
+a{
+	
+	text-decoration:none;
+	
+}
 
 .select_body{
 	
@@ -46,10 +51,10 @@ input{
         position: fixed;
         text-align: center;
         padding: 10px;    
-	
+		vertical-align: center;
 		border:1px soliв black;
 		
-		top:0%;
+		top:10%;
 		left:10%;
 		right:10%;
 		bottom:5%;
