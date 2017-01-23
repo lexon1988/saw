@@ -103,7 +103,7 @@
 			
 			padding:5px;
 			width:100%;
-			background-color:skyblue;
+			background-color:#354759;
 			color:white;
 			font-size:25px;
 		}
@@ -488,7 +488,7 @@ echo "
 		for($i=0;$i<$in_mass_count;$i++){
 			$temp_user= $db->get_user_by_id($in_mass[$i]['from_post']);
 			$temp_ads=$in_mass[$i]['ads'];
-			echo "<h2><a href='massages.php?to=".$in_mass[$i]['from_post']."&ads=".$in_mass[$i]['ads']."#down' style=' font-size:16px; text-decoration:none;' rel='external'>".$temp_user." [".$temp_ads."]</a></h2><br>";
+			echo "<h2><a href='massages.php?to=".$in_mass[$i]['from_post']."&ads=".$in_mass[$i]['ads']."#down' style=' font-size:16px; text-decoration:none;' rel='external'>".$temp_user." [".$temp_ads."]</a></h2>";
 		}
 		if($in_mass_count=="") echo "<br>Нет сообщений<br><br>";
 		?>
@@ -501,7 +501,7 @@ echo "
 		for($i=0;$i<$out_mass_count;$i++){
 		$temp_user= $db->get_user_by_id($out_mass[$i]['to_post']);
 		$temp_ads=$out_mass[$i]['ads'];
-		echo "<h2><a href='massages.php?to=".$out_mass[$i]['to_post']."&ads=".$out_mass[$i]['ads']."#down' style='font-size:16px; text-decoration:none;' rel='external'>".$temp_user." [".$temp_ads."]</a></h2><br>";
+		echo "<h2><a href='massages.php?to=".$out_mass[$i]['to_post']."&ads=".$out_mass[$i]['ads']."#down' style='font-size:16px; text-decoration:none;' rel='external'>".$temp_user." [".$temp_ads."]</a></h2>";
 		}	
 		if($out_mass_count=="") echo "<br>Нет сообщений<br><br>";
 		?>
@@ -543,7 +543,7 @@ echo "
 		for($i=0;$i<$in_mass_count;$i++){
 			$temp_user= $db->get_user_by_id($in_mass[$i]['from_post']);
 			$temp_ads=$in_mass[$i]['ads'];
-			echo "<h2><a href='massages.php?to=".$in_mass[$i]['from_post']."&ads=".$in_mass[$i]['ads']."#down' style=' font-size:16px; text-decoration:none;' class='ui-btn ui-corner-all ui-btn-a' rel='external' rel='external'>".$temp_user." [".$temp_ads."]</a></h2><br>";
+			echo "<h2><a href='massages.php?to=".$in_mass[$i]['from_post']."&ads=".$in_mass[$i]['ads']."#down' style=' font-size:16px; text-decoration:none;' class='ui-btn ui-corner-all ui-btn-a' rel='external' rel='external'>".$temp_user." [".$temp_ads."]</a></h2>";
 			
 		}
 	
@@ -561,7 +561,7 @@ echo "
 		for($i=0;$i<$out_mass_count;$i++){
 		$temp_user= $db->get_user_by_id($out_mass[$i]['to_post']);
 		$temp_ads=$out_mass[$i]['ads'];
-		echo "<h2><a href='massages.php?to=".$out_mass[$i]['to_post']."&ads=".$out_mass[$i]['ads']."#down' style='font-size:16px; text-decoration:none;' class='ui-btn ui-corner-all ui-btn-a' rel='external'>".$temp_user." [".$temp_ads."]</a></h2><br>";
+		echo "<h2><a href='massages.php?to=".$out_mass[$i]['to_post']."&ads=".$out_mass[$i]['ads']."#down' style='font-size:16px; text-decoration:none;' class='ui-btn ui-corner-all ui-btn-a' rel='external'>".$temp_user." [".$temp_ads."]</a></h2>";
 		
 		}	
 		
@@ -751,22 +751,27 @@ if($_POST['massage']<>""){
 		
 		
 		
-		
+<?php 
+
+if($_GET['to']<>""){
+
+?>		
 		
 		
 <script>
-var down=$(document).height()-50;
-
 $(window).load(function() {
   		
-	$("html, body").animate({ scrollTop: down }, 1000);
+$("html, body").animate({ scrollTop: $(document).height()-($(document).height()*0.27) }, 500);
 
  });
-
 </script>
 		
 		
-		
+<?php
+
+} 
+
+?>			
 		
 	
 
