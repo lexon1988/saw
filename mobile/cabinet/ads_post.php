@@ -59,7 +59,7 @@ echo "<div class='content Scontainer'>
 
 
 
-$headerr->redirect_to("ads_my.php",2500);
+$headerr->redirect_to("ads_my.php",0);
 
 echo "</div></div>";
 

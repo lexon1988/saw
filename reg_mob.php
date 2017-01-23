@@ -112,7 +112,7 @@ $db=new Database();
 
 
                         $headerr->notification("Вы зарегистрировались на сайте","");
-                        $headerr->redirect_to('mobile/cabinet/index.php','500');
+                        $headerr->redirect_to('mobile/cabinet/index.php','0');
 
 
 

@@ -1,50 +1,26 @@
 <?php
-
-
 if($_GET['reset']<>""){
-
 setcookie("type","");
 setcookie("cat1","");
 setcookie("cat2","");
 setcookie("cat3","");
-
 header("Location:index.php");
 }
-
-
-
 if($_GET['type']<>""){
-
 //КУКИСЫ СОРТИРОВЩИКА ***НЕ УДАЛЯТЬ***
 setcookie("type",$_GET['type']);
 setcookie("cat1",$_GET['cat1']);
 setcookie("cat2",$_GET['cat2']);
 setcookie("cat3",$_GET['cat3']);
-
-
 header("Location:index.php");
 	
 }
-
-
-
-
-
-
-
 include('classes/class.php');
-
 $db=new Database();
 $headerr=new Headerr();
-
-
-
 $headerr->headerrs("SaaWok  - инструмент взаимодействия потребителя и поставщика","Портал представляет из себя инструмент, выявляющий очевидную потребность в конкретных товарах и услугах","Частные объявления, товары и услуги, инструмент для покупателя, инструмент поставщика, объявления Казахстан","utf-8");
 $headerr->user_bar();
-
-
 $user_id=$_COOKIE['id'];
-
 ?>
 
 
@@ -58,21 +34,13 @@ $user_id=$_COOKIE['id'];
 
 
 <?php
-
 echo "
-
-
-
 <div class='content Scontainer'>
-
 <table>
 	<tr>
 		<td class='sorting_td' valign='top'>
-
 		<div style='heigth:100%; width:100%;'>
-
 			<div class='search_sidebar shadow2' id='right_block'>";
-
 			include("tools/search_sidebar/index/index.php");
 			
 			
@@ -97,23 +65,15 @@ echo "
 		
 	}
 	
-
 	echo "
 	
 </td>
-
 <td class='content_td' valign=top width=100%>
-
 ";
-
 include("tools/settings/index.php");
 	
 echo "
-
-
 ";
-
-
 	
 	//средний банер
 	if(file_exists('banners/2.txt')){
@@ -121,51 +81,27 @@ echo "
 		echo file_get_contents("banners/2.txt");
 		
 	}
-
-
-
 echo "
-
 <div class='grid' >
 	
 ";
-
-
-
 include("ads.php");
-
 echo "
-
-
 </div>
-
-
-
 </td>
-
 ";
-
-
 	//левый банер
 	if(file_exists('banners/3.txt')){
 		
 		echo file_get_contents("banners/3.txt");
 		
 	}
-
-
 echo "
 </tr>
 </table>
-
 <div id='show_more' class='show_style'>Загрузить ещё</div>
-
 </div>
-
 ";
-
-
-
 ?>
 
 
@@ -174,14 +110,10 @@ echo "
 
 <script>
 $(document).ready(function() {
-
-
 	var page=1;
 	
-
 	// Each time the user scrolls
 	$(window).scroll(function() {
-
 		if (parseInt($(window).scrollTop()) == $(document).height() - $(window).height()) {		
 		
 		
@@ -207,16 +139,12 @@ $(document).ready(function() {
 			});
 		}
 	
-
 	});
-
 	
 	
 	
 $('#show_more').bind('click', function(){
-
 	
-
  
 	$.ajax({
 				
@@ -243,15 +171,7 @@ $('#show_more').bind('click', function(){
 	
 	
 });
-
-
-
-
 });
-
-
-
-
 </script>
 <div id="toTop">&nbsp; </div>
 <script type="text/javascript">
@@ -265,7 +185,6 @@ $('#show_more').bind('click', function(){
         });
         $('#toTop').click(function() {
             $('body,html').animate({scrollTop:0},800);
-
         });
     });
     /*var mainmenu=$(".main_menu_a");
@@ -292,14 +211,12 @@ $('#show_more').bind('click', function(){
                 });
             } catch(e) { }
         });
-
         var n = d.getElementsByTagName("script")[0],
             s = d.createElement("script"),
             f = function () { n.parentNode.insertBefore(s, n); };
         s.type = "text/javascript";
         s.async = true;
         s.src = "https://mc.yandex.ru/metrika/watch.js";
-
         if (w.opera == "[object Opera]") {
             d.addEventListener("DOMContentLoaded", f, false);
         } else { f(); }
@@ -313,10 +230,8 @@ $('#show_more').bind('click', function(){
   (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
   ga('create', 'UA-90032950-1', 'auto');
   ga('send', 'pageview');
-
 </script>
 
 <!— Rating@Mail.ru counter —>
@@ -354,7 +269,6 @@ _tmr.push({id: "2850706", type: "pageView", start: (new Date()).getTime()});
     s.src =
     (d.location.protocol == "https:" ? "https:" : "http:") +
     "//st.top100.ru/top100/top100.js";
-
     if (w.opera == "[object Opera]") {
     d.addEventListener("DOMContentLoaded", f, false);
 } else { f(); }
@@ -376,19 +290,11 @@ if($ads_count<12){
 	
 	";
 }
-
 ?>
 
 
 
 
 <?php
-
-
-
-
-
 $headerr->footerr();
-
-
 ?>

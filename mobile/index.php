@@ -166,33 +166,35 @@ $day_filter="Фильтр по дням";
 			</table>
 	</form>
 
-	<div style='width:90%; margin:0 auto; padding:5px; border:0px solid black;'>
+	<div style='width:90%; margin:0 auto; padding:5px; border:0px solid black; margin-top:-20px;'>
 	
 		<?php 
 		
 
 			if($filter_type_cat=="" AND $filter_type_cat<>"0"){
 				
-				echo "<font color='red'>Категории не выбрана! </font>";
+				echo "<a href='#leftpanel1' class='ui-btn  ui-icon-alert  ui-btn-icon-left'><font color='red'>Категории не выбрана! </font></a>";
 				
 			}else{
 				
 				
 				echo "<b>Категории:</b> ".$filter_type_cat." / ".$filter_cat1." / ".$filter_cat2." / ".$filter_cat3;
-				
+				echo "<hr>";
 			}
 			
-			echo "<br>";
+
 	
 			if($region==""){
-			
-				echo "<font color='red'>Регион не выбран!</font>";
+				
+				echo "<a href='#leftpanel1' class='ui-btn  ui-icon-alert  ui-btn-icon-left'><font color='red'> <b>Регион не выбран!</b></font></a>";
 				
 			}else{
 				
 				echo "<b>Регион:</b> ".$region;
 				
-			}			
+			}		
+
+		
 			
 			if($filter_type_cat=="" AND $region==""){
 				
@@ -314,7 +316,18 @@ include("ads.php");
         <a href='../mob_cookie.php?reset=1'  rel='external' class="ui-btn ui-btn-a">Сбросить настройки</a>
         
 		
+		<hr>
+	
+	<div style='width:100%; text-align:center;'>
+		<a href='../../terms/' style='color:white;' rel='external'>Правила</a> | <a href='../../hello/' style='color:white;' rel='external'>Инструкции</a> 	
+	</div>	
+	
 	</form>	
+	
+
+	
+	
+	
 </div><!-- /leftpanel1 -->
         
 
@@ -328,6 +341,8 @@ include("ads.php");
 <script>
 
 $( document ).ready(function() {
+
+
 
 	var page=1;
 	
@@ -428,6 +443,36 @@ $("img").bind("click", function() {
 
 
 });
+
+
+
+<?php
+$massages_count= count($db->db_select("massages","WHERE to_post='$user_id' AND status='0'"));
+if($massages_count>0){
+	
+	echo "
+
+setTimeout(function () {
+	
+alert('Внимание! У вас есть непрочитанные сообщения, перейдите в личный кабинет.');
+
+}, 3000); // время в мс
+
+	
+	
+	
+	
+
+
+	";
+	
+}
+?>
+
+
+
+
+
 
 </script>
 		

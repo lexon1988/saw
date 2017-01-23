@@ -115,7 +115,7 @@ if($_POST['g-recaptcha-response']<>""){
                         $headerr->headerrs("Регистрация","","","utf-8");
                         $headerr->user_bar();
                         $headerr->notification("Вы зарегистрировались на сайте","");
-                        $headerr->redirect_to('cabinet/index.php','500');
+                        $headerr->redirect_to('cabinet/index.php','0');
 
 
 

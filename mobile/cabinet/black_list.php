@@ -21,21 +21,16 @@
 
 		
 		
-		
-		<style>
-		
+<style>
 		td{
-			
 			padding:3px;
 			font-size:10px;
 			color:black;
-			
 			background-color:#EFECEC;
 			border:1px solid lighthgrey;
 		}
 		
 		th{
-			
 			//border:1px solid grey;
 			padding:3px;
 			background-color:lightgrey;
@@ -43,24 +38,14 @@
 			color:black;
 		}
 		
-	
-		
+
 		.links{
 			
 			font-size:12px;
 			
 		}
 
-	
 
-		
-		
-		
-		
-		
-		
-		
-		
 		.white{
 			
 		   color:white;
@@ -93,7 +78,7 @@
 			margin-top:10px;
 			min-height:20px;
 			padding:15px;
-			width:50%;
+			width:75%;
 			border-radius:25px;	
 			background-color:#EFECEC;
 			
@@ -105,10 +90,10 @@
 			margin-top:10px;
 			min-height:20px;
 			padding:15px;
-			width:50%;
+			width:75%;
 			border-radius:25px;	
 			background-color:#DFFFB3;			
-			margin-left:45%;
+			margin-left:25%;
 		}
 		
 		.chat_in_p{
@@ -125,7 +110,41 @@
 			
 		}
 		
-		</style>
+		.mass{
+			
+			padding:5px;
+			width:100%;
+			background-color:#2a2a2a;
+			color:white;
+			font-size:25px;
+		}
+		
+		.mass2{
+			
+			padding:5px;
+			width:100%;
+			background-color:#3737;
+			color:white;
+			font-size:20px;
+			border-bottom:1px solid grey;
+		}
+		
+		.mass3{
+			
+			padding:5px;
+			width:100%;
+			background-color:#3737;
+			color:white;
+			font-size:20px;
+			border-top:1px solid grey;
+		}
+				
+		small{
+			font-size:12px;
+			
+		}
+	</style>
+		
 		
 
 		
@@ -304,41 +323,52 @@ echo "</table>";
 <div data-role="panel" id="leftpanel1" data-position="left" data-display="push" data-theme="b" style='z-index:9999'>
 
  
-<div class='contacts' rel='external'> 
-<hr>
-<b>Входящие:</b>
-<hr> 
-<?php
-for($i=0;$i<$in_mass_count;$i++){
-	$temp_user= $db->get_user_by_id($in_mass[$i]['from_post']);
-	$temp_ads=$in_mass[$i]['ads'];
-	echo "<a href='massages.php?to=".$in_mass[$i]['from_post']."&ads=".$in_mass[$i]['ads']."#down' style='color:white; font-size:12px; text-decoration:none;' rel='external'>".$temp_user." [".$temp_ads."]</a><br>";
-}
-?>
-</div>
+ <div class='mass2'>
+		<b>Входящие:</b>
+		
+		<?php if($in_mass_count=="") echo "<small>Нет сообщений</small>";  ?>
+		</div>
+		<?php
+			
+		
+		for($i=0;$i<$in_mass_count;$i++){
+			$temp_user= $db->get_user_by_id($in_mass[$i]['from_post']);
+			$temp_ads=$in_mass[$i]['ads'];
+			echo "<h2><a href='massages.php?to=".$in_mass[$i]['from_post']."&ads=".$in_mass[$i]['ads']."#down' style=' font-size:16px; text-decoration:none;' class='ui-btn ui-corner-all ui-btn-a' rel='external' rel='external'>".$temp_user." [".$temp_ads."]</a></h2>";
+			
+		}
+	
+		?>
+		
+		<br><br>
+		<div class='mass2'>
+		<b>Исходящие:</b>
+		
+		<?php if($out_mass_count=="") echo "<small>Нет сообщений</small>";  ?>
+		</div>
+		<?php
+	
+		
+		for($i=0;$i<$out_mass_count;$i++){
+		$temp_user= $db->get_user_by_id($out_mass[$i]['to_post']);
+		$temp_ads=$out_mass[$i]['ads'];
+		echo "<h2><a href='massages.php?to=".$out_mass[$i]['to_post']."&ads=".$out_mass[$i]['ads']."#down' style='font-size:16px; text-decoration:none;' class='ui-btn ui-corner-all ui-btn-a' rel='external'>".$temp_user." [".$temp_ads."]</a></h2>";
+		
+		}	
+		
+		?>
+	 
+		<div class='mass2'>
+		<b>Администрация:</b>
+		</div>
+		<br>
+		<a href='massages.php?to=000&ads=000#down' style='font-size:16px; text-decoration:none;'  rel='external' class='ui-btn ui-corner-all ui-btn-a' rel='external'>СЛУЖБА ПОДДЕРЖКИ</a>
 
-<div class='contacts' rel='external'> 
-<hr>
-<b>Исходящие:</b>
-<hr>
-<?php
-for($i=0;$i<$out_mass_count;$i++){
-$temp_user= $db->get_user_by_id($out_mass[$i]['to_post']);
-$temp_ads=$out_mass[$i]['ads'];
-echo "<a href='massages.php?to=".$out_mass[$i]['to_post']."&ads=".$out_mass[$i]['ads']."#down' style='color:white; font-size:12px; text-decoration:none;' rel='external'>".$temp_user." [".$temp_ads."]</a><br>";
-}	
 
-?>
-</div>
-
-<hr>
-<a href='massages.php?to=000&ads=000#down' style='color:white; font-size:14px; text-decoration:none;' rel='external'>***СЛУЖБА ПОДДЕРЖКИ****</a>
-
-
-<br><br>
-
+<br>
+<div class='mass3'>
 <a href='black_list.php' class='ui-btn ui-btn-b'  rel='external'>Черный список</a>
-
+</div>
 
 </div><!-- /leftpanel1 -->
         
