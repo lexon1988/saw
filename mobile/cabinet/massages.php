@@ -434,8 +434,8 @@ $ads=$db->db_select("ads","WHERE id='$ads_get'");
 				<tr>
 					<td class='modal_td_bg'><img src='".$dirr."".$dir[$i]."' height=60em></td>
 					";
-					echo "<td align='center' class='modal_td_sm'><a href='massages.php?post_file=".$dir[$i]."&to=".$_GET['to']."&ads=".$_GET['ads']."'><div class='submit_st2'  rel='external'>Отправить</div></a></td>";
-					echo "<td align='center' class='modal_td_sm'><a href='massages.php?del_file=".$dir[$i]."&to=".$_GET['to']."&ads=".$_GET['ads']."'><div class='submit_st2'  rel='external'>Удалить</div></a></td>";
+					echo "<td align='center' class='modal_td_sm'><a href='massages.php?post_file=".$dir[$i]."&to=".$_GET['to']."&ads=".$_GET['ads']."'><div class='ui-link ui-btn ui-btn-b ui-icon-mail ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all'  rel='external'>Отправить</div></a></td>";
+					echo "<td align='center' class='modal_td_sm'><a href='massages.php?del_file=".$dir[$i]."&to=".$_GET['to']."&ads=".$_GET['ads']."'><div  class='ui-link ui-btn ui-btn-b ui-icon-delete ui-btn-icon-notext ui-btn-inline ui-shadow ui-corner-all'  rel='external'>Удалить</div></a></td>";
 					echo "	
 				 </tr>
 				";
@@ -453,7 +453,7 @@ $ads=$db->db_select("ads","WHERE id='$ads_get'");
 
 
 <input name='files[]' type='file' multiple  accept='image/jpeg,image/png,image/gif'  placeholder='загрузите файлы!'/>
-<input class='submit_st1' type='submit' value='Загрузить'>
+<input  type='submit' class="ui-btn ui-btn-b" rel='external' value='Загрузить'>
 </form>
 
 
@@ -645,34 +645,20 @@ if($_GET['post_file']<>""){
 
 	$arr['date']=strtotime(date("Y-m-d H:i:s"));
 	$arr['from_post']=$from_post;
-	$arr['to_post']=$_GET['to'];
-	$arr['ads']=$_GET['ads'];
+	$arr['to_post']=$to_post=$_GET['to'];
+	$arr['ads']=$ads=$_GET['ads'];
 	$arr['massage']="<a href='../uploads/".$from_post."/chat/".$_GET['post_file']."' target='_blank' id='img".$arr['date']."'><img src='../uploads/".$from_post."/chat/".$_GET['post_file']."' height='40em'></a>
 	
-	<script type='text/javascript'>
-			$(document).ready(function() {
-		
-				$('#img".$arr['date']."').fancybox({
-					openEffect  : 'elastic',
-					closeEffect : 'elastic',
-					nextEffect  : 'elastic',
-					prevEffect  : 'elastic'
-				
-				
-				
-				});
-			});
-		</script>
 	
-			
 
 	";
-
-
+	
+	$db->db_update("massages","set status=1 WHERE from_post='$to_post' AND to_post='$from_post' AND ads='$ads'");
 	$db->db_insert("massages",$arr);
 	$go_back="massages.php?to=".$_GET['to']."&ads=".$_GET['ads'];
 	$headerr->redirect_to($go_back,'0');
 
+		//echo "set status=1 WHERE from_post='".$to_post."' AND to_post='".$from_post."' AND ads='".$ads."'";
 
 }	
 
@@ -761,7 +747,7 @@ if($_GET['to']<>""){
 <script>
 $(window).load(function() {
   		
-$("html, body").animate({ scrollTop: $(document).height()-($(document).height()*0.27) }, 500);
+$("html, body").animate({ scrollTop: $(document).height() }, 500);
 
  });
 </script>

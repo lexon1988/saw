@@ -312,8 +312,8 @@ include("ads.php");
 	
 	
         
-        <input type='submit' value='Сохранить настройки' class="ui-btn ui-btn-b" style='width:100%;'>
-        <a href='../mob_cookie.php?reset=1'  rel='external' class="ui-btn ui-btn-a">Сбросить настройки</a>
+        <input type='submit' value='Сохранить настройки' class="ui-btn ui-btn-b" style='width:100%; background: #156323;'>
+        <a href='../mob_cookie.php?reset=1'  rel='external' class="ui-btn ui-btn-b" style='color:white; background: #651e0f;'>Сбросить настройки</a>
         
 		
 		<hr>
