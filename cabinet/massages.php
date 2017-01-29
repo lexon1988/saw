@@ -913,7 +913,7 @@ if($_POST['massage']<>""){
 	}else{
 
 	
-		if($mail_me=="yes"){
+if($mail_me=="yes"){
 			
 			//Шаблон письма меняй тут!
 			$chat_massage_tit="New massage from chat";
@@ -959,13 +959,9 @@ if($_POST['massage']<>""){
 		
 
 		$mass_insert['date']=strtotime(date("Y-m-d H:i:s"));
-
 		$mass_insert['to_post']=$to_post;
-
 		$mass_insert['from_post']=$from_post;
-
 		$mass_insert['massage']=strip_tags($_POST['massage']);
-
 		$mass_insert['ads']=$ads=$_GET['ads'];
 
 		
@@ -975,19 +971,13 @@ if($_POST['massage']<>""){
 		
 
 		$db->db_insert("massages",$mass_insert);
-
-		
-
 		$headerr->redirect_to("massages.php?to=".$_GET['to']."&ads=".$_GET['ads'],0);
 
 		
-
 		$db->db_update("massages","set status=1 WHERE from_post='$to_post' AND to_post='$from_post' AND ads='$ads'");
 
-		
-
+	
 		$go_back="massages.php?to=".$to_post."&ads=".$ads_id;
-
 		$headerr->redirect_to($go_back,'0');
 
 
@@ -1040,6 +1030,56 @@ $headerr->redirect_to($go_back,'0');
 
 if($_GET['post_file']<>""){
 
+
+if($mail_me=="yes"){
+			
+			//Шаблон письма меняй тут!
+			$chat_massage_tit="New massage from chat";
+			$chat_massage= "
+
+Вам прислали файл в чате!
+
+
+Отключить уведомления возможно в настройках Личного кабинета
+( http://saawok.com/cabinet/profile.php - Перейти в настройки Личного кабинета )
+
+ - - - - - - - -
+
+С уважением,
+Служба поддержки SaaWok.Com			
+			";
+			
+			include "../classes/mailer/libmail.php"; // вставляем файл с классом
+			//$m= new Mail; // начинаем 
+			$m= new Mail('utf-8'); 
+
+			$m->From( "hello@saawok.com" ); // от кого отправляется почта 
+			$m->To( $email_to ); // кому адресованно
+
+			$m->Subject( $chat_massage_tit);
+			$m->Body( $chat_massage);    
+//			$m->Cc( "info@saawok.com"); // копия письма отправится по этому адресу
+			$m->Bcc( "info@saawok.com"); // скрытая копия отправится по этому адресу
+			$m->Priority(3) ;    // приоритет письма
+//			$m->Attach( "p10.png","", "image/gif" ) ; // прикрепленный файл 
+			$m->smtp_on( "ssl://smtp.yandex.ru", "hello@saawok.com", "K0!kj-Qj1%n1Z3", 465) ; // если указана эта команда, отправка пойдет через SMTP 
+			$m->Send();    // а теперь пошла отправка
+			$m->log_on(true);
+						
+	
+			
+}
+
+
+
+
+
+
+
+
+
+
+
 	$arr['date']=strtotime(date("Y-m-d H:i:s"));
 	$arr['from_post']=$from_post;
 	$arr['to_post']=$to_post=$_GET['to'];
@@ -1071,6 +1111,7 @@ if($_GET['post_file']<>""){
 	
 	<!-- <a href='../uploads/".$from_post."/chat/".$_GET['post_file']."'>***Файл- ".$_GET['post_file']."***</a> -->
 	";
+
 
 	
 	$db->db_update("massages","set status=1 WHERE from_post='$to_post' AND to_post='$from_post' AND ads='$ads'");
