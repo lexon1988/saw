@@ -1,7 +1,5 @@
 <?php
 
-
-
 $user_id= $_COOKIE['id'];
 
 
@@ -45,7 +43,6 @@ if($search<>""){
 if($user_id<>""){
 
 
-
 	$black_ads=$db->db_select("black_ads","WHERE user='$user_id'");
 	$black_ads_count=count($black_ads);
 
@@ -55,7 +52,7 @@ if($user_id<>""){
 	
 		$back_ads_sql=$back_ads_sql." and id<>".$black_ads[$i]['ads'];
 
-		
+	
 
 	}
 
@@ -79,15 +76,9 @@ $ads_count=count($ads);
 
 
 
-
-
-
 for($i=0;$i<$ads_count; $i++){
 
 	
-
-
-
 
 $ads_count=count($ads);
 for($i=0;$i<$ads_count;$i++){
@@ -204,17 +195,11 @@ if($get_date<>date("d.m.y", mktime(0, 0, 0, date('m'), date('d') - 1, date('Y'))
 
 
 
-
 if(iconv_strlen($ads[$i]['text'])>100) {$show_more="<a href='ob.php?id=".$ads[$i]['id']."'>[...]</a>";}else{$show_more="";}
 
 
 
 	
-
-
-
-
-
 
 
 echo "</div>
@@ -231,9 +216,6 @@ echo $date." в ".$time;
 	echo "
 
 				</div>
-
-
-
 			</td>
 
 
@@ -544,13 +526,11 @@ echo "
 			<tr>                             
 
 			 <td class='mod_big_td' colspan='4'>
-
+				<div class='mod_text'>
 	
+						".$ads[$i]['text']."
 
-			                      ".$ads[$i]['text']."
-
-
-
+				</div>
 			</td></tr>
 
 			<tr>
