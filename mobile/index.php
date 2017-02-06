@@ -180,7 +180,9 @@ alert('Внимание! У вас есть непрочитанные сооб�
 		
 		 if($_COOKIE['id']<>""){
 			
-			echo "<a href='cabinet/massages.php' class='ui-btn  ui-icon-comment  ui-btn-icon-left'><font >Сообщения[".$massages_count."] </font></a>";
+			
+			echo "<a href='cabinet/ads_add.php' class='ui-btn  ui-icon-shop  ui-btn-icon-left'><font >Подать объявления</font></a>";
+			echo "<a href='cabinet/massages.php' class='ui-btn  ui-icon-mail  ui-btn-icon-left'><font >Сообщения[".$massages_count."] </font></a>";
 			
 			
 		 }	
@@ -189,7 +191,7 @@ alert('Внимание! У вас есть непрочитанные сооб�
 
 			if($filter_type_cat=="" AND $filter_type_cat<>"0" OR $region==""){
 				
-				echo "<a href='#leftpanel1' class='ui-btn  ui-icon-alert  ui-btn-icon-left'><font color='red'>Настойте регион и категорории в фильтрах! </font></a>
+				echo "<a href='#leftpanel1' class='ui-btn  ui-icon-alert  ui-btn-icon-left'><font color='red'>Настойте регион и категории в фильтрах! </font></a>
 				<hr>
 				<small>По умолчанию объявления выводятся по всем категорияи из всех регионов</small>
 				";
