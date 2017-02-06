@@ -492,8 +492,6 @@ echo "
 
                 <tr class='bg_tr'>
 
-
-
                         <td class='bg_td' colspan='4'>
 
                                 <p class='ob_obl'><i class='fa fa-map-marker' aria-hidden='true'></i> 
@@ -681,9 +679,7 @@ echo "
                         echo "</p><br /><p class='ht_style'>Категории</p>: <p class='in_style'> 
 
                         ".$db->get_cat_by_id($ads[$i]['cat1'])." / 
-
                         ".$db->get_cat_by_id($ads[$i]['cat2'])." /
-
                         ".$db->get_cat_by_id($ads[$i]['cat3'])." </p>
 
 
@@ -714,11 +710,8 @@ echo "
 
 			}else{ 
 
-			
-
 			$nowrite="";
 
-			
 
 			}
 
@@ -740,10 +733,10 @@ echo "
 
                          <td class='mod_big_td' colspan='4'>
 
-
+								<div class='mod_text'>
 
                                               ".$ads[$i]['text']."
-
+								</div>
 
 
                         </td></tr>

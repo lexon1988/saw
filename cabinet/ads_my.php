@@ -168,6 +168,45 @@ if($_GET['id']<>"" ){
 
 if($_GET['id']<>""){
 	
+	
+//Шаблон письма меняй тут!
+$chat_massage_tit="New massage from chat";
+$chat_massage= "
+
+Ваше объявление отклонено!
+
+
+
+Отключить уведомления возможно в настройках Личного кабинета
+( http://saawok.com/cabinet/profile.php - Перейти в настройки Личного кабинета )
+
+ - - - - - - - -
+
+С уважением,
+Служба поддержки SaaWok.Com			
+			";
+			
+			include "../classes/mailer/libmail.php"; // вставляем файл с классом
+			//$m= new Mail; // начинаем 
+			$m= new Mail('utf-8'); 
+
+			$m->From( "hello@saawok.com" ); // от кого отправляется почта 
+			$m->To( $email_to ); // кому адресованно
+
+			$m->Subject( $chat_massage_tit);
+			$m->Body( $chat_massage);    
+//			$m->Cc( "info@saawok.com"); // копия письма отправится по этому адресу
+			$m->Bcc( "info@saawok.com"); // скрытая копия отправится по этому адресу
+			$m->Priority(3) ;    // приоритет письма
+//			$m->Attach( "p10.png","", "image/gif" ) ; // прикрепленный файл 
+			$m->smtp_on( "ssl://smtp.yandex.ru", "hello@saawok.com", "K0!kj-Qj1%n1Z3", 465) ; // если указана эта команда, отправка пойдет через SMTP 
+			$m->Send();    // а теперь пошла отправка
+			$m->log_on(true);
+	
+	
+	
+	
+	
 $del_id=$_GET['id'];
 	
 $ads=$db->db_select("ads","WHERE id='$del_id'");	

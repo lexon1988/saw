@@ -1,42 +1,21 @@
 <?php
 
-
-
-
-
 $user_id= $_COOKIE['id'];
 
 
 
-
-
 if($_COOKIE['type']<>"") $type="AND type='".$_COOKIE['type']."' ";
-
 if($_COOKIE['cat1']<>"") $cat1="AND cat1='".$_COOKIE['cat1']."' ";
-
 if($_COOKIE['cat2']<>"") $cat2="AND cat2='".$_COOKIE['cat2']."' ";
-
 if($_COOKIE['cat3']<>"") $cat3="AND cat3='".$_COOKIE['cat3']."' ";
 
 
 
 
 
-
-
-
-
-
-
 if($_COOKIE['sql_date']<>"") $sql_date="AND date>'".$_COOKIE['sql_date']."' ";
-
 if($_COOKIE['region']<>"") $sql_region="AND region='".$_COOKIE['region']."' ";
-
 if($_COOKIE['city']<>"") $sql_city="AND city='".$_COOKIE['city']."' ";
-
-
-
-
 
 
 
@@ -47,14 +26,11 @@ $sqls=$type.$cat1.$cat2.$cat3.$sql_date.$sql_region.$sql_city;
 
 
 $search=$_GET['search'];
-
 if($search<>""){
 
 	
-
 	$sqls=" AND text LIKE '%".$search."%'";
 
-	
 
 }
 
@@ -67,20 +43,16 @@ if($search<>""){
 if($user_id<>""){
 
 
-
 	$black_ads=$db->db_select("black_ads","WHERE user='$user_id'");
-
 	$black_ads_count=count($black_ads);
-
 
 
 	for($i=0; $i<$black_ads_count; $i++){
 
-		
-
+	
 		$back_ads_sql=$back_ads_sql." and id<>".$black_ads[$i]['ads'];
 
-		
+	
 
 	}
 
@@ -97,11 +69,7 @@ if($user_id<>""){
 
 
 $ads= $db->db_select("ads","WHERE status=2 ".$sqls." ".$back_ads_sql." order by id desc LIMIT 12");
-
 $ads_count=count($ads);
-
-
-
 
 
 
@@ -112,11 +80,7 @@ for($i=0;$i<$ads_count; $i++){
 
 	
 
-
-
-
 $ads_count=count($ads);
-
 for($i=0;$i<$ads_count;$i++){
 
 
@@ -129,14 +93,12 @@ $get_date= date("d.m.y",$ads[$i]['date']);
 
 
 if($get_date==$today){
-	
 	$date="Сегодня";
 	
 }
 
 
 if($get_date==date("d.m.y", mktime(0, 0, 0, date('m'), date('d') - 1, date('Y')))){
-	
 	$date="Вчера";
 	
 }
@@ -149,7 +111,7 @@ if($get_date<>date("d.m.y", mktime(0, 0, 0, date('m'), date('d') - 1, date('Y'))
 
 
 
-$time=date("H:i",$ads[$i]['date']);
+ $time=date("H:i",$ads[$i]['date']);
 
 //===================================================
 	
@@ -197,47 +159,24 @@ $time=date("H:i",$ads[$i]['date']);
 
 
 	<table class='ob_tab'>
-
-
-
 		<tr class='sm_tr'>
-
-
-
 			<td class='sm_td'>
-
-
-
 				<div class='ob_type'>
 
 
 
 	".$type."
 
-
-
 				</div>
-
-
-
 			</td>	
-
 			<td colspan='2' class='md_td'>
 
 
-
 				<div class='nick'>";
-
-
-
-				if($_COOKIE['id']==$ads[$i]['author']){
+	
+		if($_COOKIE['id']==$ads[$i]['author']){
 
 	
-
-
-
-			
-
 		echo "<font color='red'>Это ваше объявление!</font>";
 
 			
@@ -247,19 +186,11 @@ $time=date("H:i",$ads[$i]['date']);
 		}else{
 
 			
-
-			
-
-			
-
 			echo $db->get_user_by_id($ads[$i]['author']);
 
 
 
-	
-
 		}
-
 
 
 
@@ -269,11 +200,6 @@ if(iconv_strlen($ads[$i]['text'])>100) {$show_more="<a href='ob.php?id=".$ads[$i
 
 
 	
-
-
-
-
-
 
 
 echo "</div>
@@ -290,9 +216,6 @@ echo $date." в ".$time;
 	echo "
 
 				</div>
-
-
-
 			</td>
 
 
@@ -301,7 +224,7 @@ echo $date." в ".$time;
 
 
 
-                                <div class='dropup'>
+            <div class='dropup'>
 
   <button class='btns btn-default dropdown-toggle' type='button' id='dropdownMenu1' data-toggle='dropdown' aria-haspopup='true' aria-expanded='true'>
 
@@ -603,13 +526,11 @@ echo "
 			<tr>                             
 
 			 <td class='mod_big_td' colspan='4'>
-
+				<div class='mod_text'>
 	
+						".$ads[$i]['text']."
 
-			                      ".$ads[$i]['text']."
-
-
-
+				</div>
 			</td></tr>
 
 			<tr>

@@ -2021,14 +2021,24 @@ Modal
 }
 
 .mod_big_td {
- 	min-height: 160px;
-	max-height: 180px;
+ 
+	height: 180px;
 	width: 180px;
 	text-align: left;
 	vertical-align: top;
 	padding: 15px;
 	border: 1px solid lightgrey;
+	overflow-y:auto;
 }
+
+.mod_text{
+	
+	height: 160px;
+	overflow-y:auto;
+}
+
+
+
 
 .mod_mid_td {
 	height: 60px; 

@@ -147,7 +147,7 @@ $ads= $db->db_select("ads","WHERE id='$black_ads_id'");
 echo "
 <tr>
 
-<td>[№-".$black_list_id."] ".$ads[0]['text']."</td>
+<td>[№-".$ads[0]['id']."] ".$ads[0]['text']."</td>
 <td align=center><a href='hide_ob.php?del=".$black_ads[$i]['id']."' class='ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-notext ui-btn-b'>Удалить из списка</a></td>
 
 

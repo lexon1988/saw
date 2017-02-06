@@ -103,7 +103,30 @@ $day_filter="Фильтр по дням";
     </head>
 <body >
 
- 
+ <?php
+$massages_count= count($db->db_select("massages","WHERE to_post='$user_id' AND status='0'"));
+if($massages_count>0){
+	
+	echo "
+<script>
+
+setTimeout(function () {
+	
+alert('Внимание! У вас есть непрочитанные сообщения, перейдите в личный кабинет.');
+
+}, 3000); // время в мс
+
+	
+</script>	
+	
+	
+
+
+	";
+	
+}
+?>
+
   
 
 
@@ -118,7 +141,7 @@ $day_filter="Фильтр по дням";
 	<ul>
 		<li>
             
-            <a href="#leftpanel1" data-theme="b" class=" ui-icon-bars ui-btn-icon-left ">Меню</a> 
+            <a href="#leftpanel1" data-theme="b" class=" ui-icon-gear ui-btn-icon-left ">Фильтры</a> 
 		
         </li>
         <li>   
@@ -149,58 +172,34 @@ $day_filter="Фильтр по дням";
 <div role="main" class="ui-content grid" >
 
 
-	<form action='index.php' method='get' data-ajax="false">
-			<table width=100%>
-			<tr>
-			<td>
-			
-			<input name="search" type="text" size="26" placeholder=" &nbsp; Что хотите найти?" />
-        	
-			</td>
-			<td>
-			
-			<input  class="ui-btn"  type='submit' value='Поиск'>
-			
-			</td>
-			</tr>
-			</table>
-	</form>
+
 
 	<div style='width:90%; margin:0 auto; padding:5px; border:0px solid black; margin-top:-20px;'>
 	
 		<?php 
 		
-
-			if($filter_type_cat=="" AND $filter_type_cat<>"0"){
-				
-				echo "<a href='#leftpanel1' class='ui-btn  ui-icon-alert  ui-btn-icon-left'><font color='red'>Категории не выбрана! </font></a>";
-				
-			}else{
-				
-				
-				echo "<b>Категории:</b> ".$filter_type_cat." / ".$filter_cat1." / ".$filter_cat2." / ".$filter_cat3;
-				echo "<hr>";
-			}
+		 if($_COOKIE['id']<>""){
 			
+			echo "<a href='cabinet/massages.php' class='ui-btn  ui-icon-comment  ui-btn-icon-left'><font >Сообщения[".$massages_count."] </font></a>";
+			
+			
+		 }	
+		
+		
 
-	
-			if($region==""){
+			if($filter_type_cat=="" AND $filter_type_cat<>"0" OR $region==""){
 				
-				echo "<a href='#leftpanel1' class='ui-btn  ui-icon-alert  ui-btn-icon-left'><font color='red'> <b>Регион не выбран!</b></font></a>";
+				echo "<a href='#leftpanel1' class='ui-btn  ui-icon-alert  ui-btn-icon-left'><font color='red'>Настойте регион и категорории в фильтрах! </font></a>
+				<hr>
+				<small>По умолчанию объявления выводятся по всем категорияи из всех регионов</small>
+				";
 				
-			}else{
-				
-				echo "<b>Регион:</b> ".$region;
-				
-			}		
+			}
+
+
 
 		
-			
-			if($filter_type_cat=="" AND $region==""){
-				
-				echo "<hr><small>Для того чтобы указать категрии и регион, необходимо зайти в \"Меню\"</small>";
-				
-			}
+		
 			
 		?>
 		
@@ -267,6 +266,26 @@ include("ads.php");
 	<!-- leftpanel1  -->
 	<div data-role="panel" id="leftpanel1" data-position="left" data-display="push" data-theme="b" style='z-index:9999'>
  
+
+ 	<form action='index.php' method='get' data-ajax="false">
+			<table width=100%>
+			<tr>
+			<td>
+			
+			<input name="search" type="text" size="13" placeholder="Что ищите?" />
+        	
+			</td>
+			<td>
+			
+
+        <input type="submit" data-enhanced="true" value="Найти">
+
+			</td>
+			</tr>
+			</table>
+	</form>
+
+ 
  
 
 <form action='../mob_cookie.php' method='get' rel='external' data-ajax="false">
@@ -312,8 +331,8 @@ include("ads.php");
 	
 	
         
-        <input type='submit' value='Сохранить настройки' class="ui-btn ui-btn-b" style='width:100%;'>
-        <a href='../mob_cookie.php?reset=1'  rel='external' class="ui-btn ui-btn-a">Сбросить настройки</a>
+        <input type='submit' value='Сохранить настройки' class="ui-btn ui-btn-b" style='width:100%; background: #156323;'>
+        <a href='../mob_cookie.php?reset=1'  rel='external' class="ui-btn ui-btn-b" style='color:white; background: #651e0f;'>Сбросить настройки</a>
         
 		
 		<hr>
@@ -446,28 +465,6 @@ $("img").bind("click", function() {
 
 
 
-<?php
-$massages_count= count($db->db_select("massages","WHERE to_post='$user_id' AND status='0'"));
-if($massages_count>0){
-	
-	echo "
-
-setTimeout(function () {
-	
-alert('Внимание! У вас есть непрочитанные сообщения, перейдите в личный кабинет.');
-
-}, 3000); // время в мс
-
-	
-	
-	
-	
-
-
-	";
-	
-}
-?>
 
 
 

@@ -977,13 +977,13 @@ if($_GET['post_file']<>""){
 
 	$arr['from_post']=$from_post;
 
-	$arr['to_post']=$_GET['to'];
+	$arr['to_post']=$to_post=$_GET['to'];
 
-	$arr['ads']=$_GET['ads'];
+	$arr['ads']=$ads=$_GET['ads'];
 
 	
 	
-	
+
 	$arr['massage']="<a href='../uploads/".$from_post."/chat/".$_GET['post_file']."' target='_blank' id='img".$arr['date']."'><img src='../uploads/".$from_post."/chat/".$_GET['post_file']."' height='40em'></a>
 	
 
@@ -1012,7 +1012,7 @@ if($_GET['post_file']<>""){
 	";
 
 	
-
+	$db->db_update("massages","set status=1 WHERE from_post='$to_post' AND to_post='$from_post' AND ads='$ads'");
 	$db->db_insert("massages",$arr);
 
 	$go_back="massages.php?to=".$_GET['to']."&ads=".$_GET['ads'];

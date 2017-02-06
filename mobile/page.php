@@ -104,7 +104,7 @@ if($get_date<>date("d.m.y", mktime(0, 0, 0, date('m'), date('d') - 1, date('Y'))
 
 
 
-$time=date("H:i");
+ $time=date("H:i",$ads[$i]['date']);
 
 //===================================================
 	
